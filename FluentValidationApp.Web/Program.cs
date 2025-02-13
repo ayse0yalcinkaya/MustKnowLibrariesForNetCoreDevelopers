@@ -1,4 +1,15 @@
+using FluentValidationApp.Web.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// SQL Server Baðlantýsýný Yapýlandýr
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConStr")));
+
+// Controller ve View Desteðini Ekle
+builder.Services.AddControllersWithViews();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
